@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  micro-login-users:
+    build: .
+    container_name: micro-login-users-ruwark
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - SERVICE_NAME=micro-login-users
+      - SERVICE_TOKEN=${SERVICE_TOKEN}
+      - API_GATEWAY_URL=http://api-gateway:3000
+    volumes:
+      - ./src:/app/src
+      - ./migrations:/app/migrations
+    networks:
+      - ruwark-network
+    restart: unless-stopped
+
+networks:
+  ruwark-network:
+    external: true

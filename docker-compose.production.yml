@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  micro-login-users:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micro-login-users-ruwark-prod
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - SERVICE_NAME=micro-login-users
+      - SERVICE_TOKEN=${SERVICE_TOKEN}
+      - API_GATEWAY_URL=${API_GATEWAY_URL}
+    networks:
+      - ruwark-network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+
+networks:
+  ruwark-network:
+    external: true

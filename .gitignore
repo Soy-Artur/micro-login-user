@@ -1,0 +1,32 @@
+# NODE MODULES Y DEPENDENCIAS
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# VARIABLES DE ENTORNO
+
+
+# LOGS
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# BUILD
+dist/
+build/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
